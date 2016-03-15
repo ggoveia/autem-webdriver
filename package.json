@@ -1,0 +1,19 @@
+{
+  "name": "autemwebdriver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "asar": "^0.10.0",
+    "electron-prebuilt": "^0.36.10",
+    "fs-jetpack": "^0.7.2",
+    "q": "^1.4.1",
+    "rcedit": "^0.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
