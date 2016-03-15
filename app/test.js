@@ -38,7 +38,7 @@ browser.wait(function () {
     return webdriver.until.elementLocated(webdriver.By.name("ItemLoteFinancLancActionForm"));
 }, 1000);
 
-console.log(document.getElementsByClassName("ex_campos")[3].innerHTML);
+//console.log(document.getElementsByClassName("ex_campos")[3].innerHTML);
         
 // browser.findElements(webdriver.By.css('[href^="/wiki/"]')).then(function(links){
 //     console.log('Found', links.length, 'Wiki links.' )
