@@ -1,13 +1,33 @@
+<!DOCTYPE html>
 <html>
-<body> 
-  <h1>Hello World!</h1>
-   We are using Electron 
-   <script> document.write(process.versions['electron']) </script> on 
-   <script> document.write(process.platform) </script>
-   <script type="text/javascript"> 
-      var fs = require('fs');
-      var file = fs.readFileSync('app/package.json'); 
-      document.write(file); 
-   </script>
-</body> 
+  <head>
+    <meta charset="UTF-8">
+   <link rel="stylesheet" href="assets/css/autem.css">
+  </head>
+  <body>
+    <div class="content">
+    <div class="input-group">
+        <div tabindex="500" class="btn btn-primary btn-file">
+            <i class="glyphicon glyphicon-folder-open"></i>&nbsp; 
+            <span class="hidden-xs">Browse …</span>
+            <input id="fileinput" name="fileinput" multiple="" type="file" class="">
+        </div>
+        <div tabindex="500" class="form-control file-caption  kv-fileinput-caption">
+            <div class="file-caption-name" title="Algorithms, 4th Edition.mobi">
+            <span id="spnFile" class="glyphicon glyphicon-file kv-caption-icon">Algorithms, 4th Edition.mobi</span></div>
+        
+        <div tabindex="500" class="btnProcess">
+            <input id="btnProcess" name="btnProcess" multiple="" type="button" class=""value="Processar">
+        </div>
+            
+    </div>
+        <div id="console">
+          <figure class="response">
+
+          </figure>
+        </div>
+    </div>  
+    <script>window.$ = window.jQuery = require("./assets/scripts/lib/jquery-1.12.1.min.js");</script>
+    <script src="assets/scripts/file.js"></script>
+  </body>
 </html>

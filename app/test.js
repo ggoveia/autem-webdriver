@@ -31,14 +31,13 @@ browser.findElement(webdriver.By.name("numeroServico")).sendKeys("1");
 browser.findElement(webdriver.By.name("valor")).sendKeys("70,00");
 browser.findElement(webdriver.By.css("input[type='button']")).click();
 
-
 browser.findElement(webdriver.By.css("td[class='ex_campos']:last-child")).click();
 
 browser.wait(function () {
     return webdriver.until.elementLocated(webdriver.By.name("ItemLoteFinancLancActionForm"));
 }, 1000);
 
-//console.log(document.getElementsByClassName("ex_campos")[3].innerHTML);
+//console.log(document.getElements  ByClassName("ex_campos")[3].innerHTML);
         
 // browser.findElements(webdriver.By.css('[href^="/wiki/"]')).then(function(links){
 //     console.log('Found', links.length, 'Wiki links.' )

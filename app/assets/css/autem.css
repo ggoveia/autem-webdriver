@@ -1,0 +1,104 @@
+body {
+    background-color:#0066CC;
+    width: 700px;
+    height: 500px;
+    margin:auto;
+}
+
+.content{
+    height: 100%;
+}
+
+.response {
+    padding: 9px 14px;
+    background-color: #E0E0E0;
+    border: 1px solid green;
+    border-radius: 4px;
+    height: 200px;
+    width: 670px;
+    margin-top: 70px;
+    margin-left: 0px;
+    position: relative;
+}
+
+.btn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background-color: green;
+    border-color: #2e6da4;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: Arial;
+    float: left;
+}
+
+#btnProcess{
+    width: 150px;
+    height: 30px;
+     margin-top: 30px;
+ }
+ 
+ .btnProcess{
+     text-align: center;
+    
+ }
+  
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+    opacity: 0;
+    background: 0 0;
+    cursor: inherit;
+    display: block;
+}
+
+.form-control {
+    display: inline-block;
+    width: 82%;
+    height: 20px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+.input-group {
+    position: relative;
+    border-collapse: separate;
+    margin-top: 130px;
+}
