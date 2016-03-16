@@ -37,7 +37,23 @@ browser.wait(function () {
     return webdriver.until.elementLocated(webdriver.By.name("ItemLoteFinancLancActionForm"));
 }, 1000);
 
-//console.log(document.getElements  ByClassName("ex_campos")[3].innerHTML);
+browser.wait(function () {
+    return webdriver.until.elementLocated(webdriver.By.name("ItemLoteFinancLancActionForm"));
+}, 1000);
+
+var alert = browser.switchTo().alert();
+alert.accept();
+
+browser.wait(webdriver.until.alertIsPresent(),1000).then(function() {
+        browser.switchTo().alert();
+        console.log(browser.switchTo().alert().getText());
+        browser.switchTo().alert().accept();
+        browser.switchTo().defaultContent();
+    });
+ 
+
+var field = browser.findElement(webdriver.By.css(".ex_campos:nth-child(2)")).getText();
+console.log(field);
         
 // browser.findElements(webdriver.By.css('[href^="/wiki/"]')).then(function(links){
 //     console.log('Found', links.length, 'Wiki links.' )
