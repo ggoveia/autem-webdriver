@@ -33,30 +33,33 @@ browser.findElement(webdriver.By.css("input[type='button']")).click();
 
 browser.findElement(webdriver.By.css("td[class='ex_campos']:last-child")).click();
 
-browser.wait(function () {
-    return webdriver.until.elementLocated(webdriver.By.name("ItemLoteFinancLancActionForm"));
-}, 1000);
 
-browser.wait(function () {
-    return webdriver.until.elementLocated(webdriver.By.name("ItemLoteFinancLancActionForm"));
-}, 1000);
+ browser.wait(function () {
+     return webdriver.until.elementLocated(webdriver.By.name("ItemLoteFinancLancActionForm"));
+ }, 1000);
 
-var alert = browser.switchTo().alert();
-alert.accept();
+// browser.switchTo().alert().getText().then(
+//     function(text) {
+//         console.log("alert detected");
+//         console.log(text);
+//     },
+//     function() {
+//         console.log("alert not detected");
+//     })
+// .then(function() {
+//     console.log("quitting...");
+//     browser.quit();
+// });
 
-browser.wait(webdriver.until.alertIsPresent(),1000).then(function() {
-        browser.switchTo().alert();
-        console.log(browser.switchTo().alert().getText());
-        browser.switchTo().alert().accept();
-        browser.switchTo().defaultContent();
-    });
+  browser.wait(function () {
+    return webdriver.until.elementLocated(webdriver.By.css("td[width=720]"));
+  },1000);
  
+ browser.findElement(webdriver.By.css("td[width=720]")).getText();
 
-var field = browser.findElement(webdriver.By.css(".ex_campos:nth-child(2)")).getText();
-console.log(field);
         
 // browser.findElements(webdriver.By.css('[href^="/wiki/"]')).then(function(links){
-//     console.log('Found', links.length, 'Wiki links.' )
+   //  console.log('Found', links.length, 'Wiki links.' )
 //     browser.quit();
 // });
 
