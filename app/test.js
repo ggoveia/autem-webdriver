@@ -33,6 +33,13 @@ browser.findElement(webdriver.By.css("input[type='button']")).click();
 
 browser.findElement(webdriver.By.css("td[class='ex_campos']:last-child")).click();
 
+browser.findElement(webdriver.By.name("idAssistencia")).sendKeys("22730309");
+browser.findElement(webdriver.By.name("numeroServico")).sendKeys("1");
+browser.findElement(webdriver.By.name("valor")).sendKeys("70,00");
+browser.findElement(webdriver.By.css("input[type='button']")).click();
+
+browser.findElement(webdriver.By.css("td[class='ex_campos']:last-child")).click();
+
 
  browser.wait(function () {
      return webdriver.until.elementLocated(webdriver.By.name("ItemLoteFinancLancActionForm"));
@@ -43,29 +50,21 @@ browser.findElement(webdriver.By.css("td[class='ex_campos']:last-child")).click(
 //         console.log("alert detected");
 //         console.log(text);
 //     },
-//     function() {
-//         console.log("alert not detected");
-//     })
+//     C
 // .then(function() {
 //     console.log("quitting...");
 //     browser.quit();
 // });
 
   browser.wait(function () {
-    return webdriver.until.elementLocated(webdriver.By.css("td[width=720]"));
+    return webdriver.until.elementLocated(webdriver.By.css("td[width='720']"));
   },1000);
  
- browser.findElement(webdriver.By.css("td[width=720]")).getText();
+// browser.findElement(webdriver.By.css("input[class='input_acao_item']")).click();
+ 
+  browser.findElement(webdriver.By.xpath("//*[@id='Layer2']/table[8]/tbody/tr[5]/td/table/tbody/tr/td[3]")).getAttribute("innerHTML").then(
+    function(textstring) {
+         console.log(textstring);
+  });
 
-        
-// browser.findElements(webdriver.By.css('[href^="/wiki/"]')).then(function(links){
-   //  console.log('Found', links.length, 'Wiki links.' )
-//     browser.quit();
-// });
-
-
-// browser.get('http://www.google.com/ncr');
-// browser.findElement(webdriver.By.name('q')).sendKeys('webdriver');
-// browser.findElement(webdriver.By.name('btnG')).click();
-// browser.wait(webdriver.until.titleIs('webdriver - Google Search'), 1000);
 // browser.quit();
