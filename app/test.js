@@ -31,19 +31,14 @@ browser.findElement(webdriver.By.name("numeroServico")).sendKeys("1");
 browser.findElement(webdriver.By.name("valor")).sendKeys("70,00");
 browser.findElement(webdriver.By.css("input[type='button']")).click();
 
-browser.findElement(webdriver.By.css("td[class='ex_campos']:last-child")).click();
-
 browser.findElement(webdriver.By.name("idAssistencia")).sendKeys("22730309");
 browser.findElement(webdriver.By.name("numeroServico")).sendKeys("1");
-browser.findElement(webdriver.By.name("valor")).sendKeys("70,00");
+browser.findElement(webdriver.By.name("valor")).sendKeys("71,00");
 browser.findElement(webdriver.By.css("input[type='button']")).click();
 
-browser.findElement(webdriver.By.css("td[class='ex_campos']:last-child")).click();
-
-
- browser.wait(function () {
+browser.wait(function () {
      return webdriver.until.elementLocated(webdriver.By.name("ItemLoteFinancLancActionForm"));
- }, 1000);
+}, 1000);
 
 // browser.switchTo().alert().getText().then(
 //     function(text) {
@@ -62,9 +57,25 @@ browser.findElement(webdriver.By.css("td[class='ex_campos']:last-child")).click(
  
 // browser.findElement(webdriver.By.css("input[class='input_acao_item']")).click();
  
-  browser.findElement(webdriver.By.xpath("//*[@id='Layer2']/table[8]/tbody/tr[5]/td/table/tbody/tr/td[3]")).getAttribute("innerHTML").then(
-    function(textstring) {
-         console.log(textstring);
-  });
+  browser.findElement(webdriver.By.id("consistirLote")).click();
+        
+  browser.wait(function () {
+    return webdriver.until.elementLocated(webdriver.By.css("td[class='ex_campos_vermelho']"));
+  },1000);
+        
+  browser.findElement(webdriver.By.css("td[class='ex_campos_vermelho']")).getAttribute("innerHTML").then(
+    function(text) {
+        console.log(text);
+    });
+        
+// browser.findElements(webdriver.By.css('[href^="/wiki/"]')).then(function(links){
+   //  console.log('Found', links.length, 'Wiki links.' )
+//     browser.quit();
+// });
 
+
+// browser.get('http://www.google.com/ncr');
+// browser.findElement(webdriver.By.name('q')).sendKeys('webdriver');
+// browser.findElement(webdriver.By.name('btnG')).click();
+// browser.wait(webdriver.until.titleIs('webdriver - Google Search'), 1000);
 // browser.quit();
