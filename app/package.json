@@ -6,5 +6,9 @@
     "chromedriver": "^2.21.2",
     "selenium-webdriver": "^2.52.0",
     "webdriverio": "^4.0.3"
+  },
+  "devDependencies": {
+    "excel": "^0.1.4",
+    "node-xlsx": "^0.6.0"
   }
 }

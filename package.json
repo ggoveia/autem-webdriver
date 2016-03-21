@@ -8,6 +8,9 @@
     "asar": "^0.10.0",
     "electron-prebuilt": "^0.36.10",
     "fs-jetpack": "^0.7.2",
+    "gulp-mocha": "^2.2.0",
+    "gulp-util": "^3.0.7",
+    "mocha": "^2.4.5",
     "q": "^1.4.1",
     "rcedit": "^0.4.0"
   },
