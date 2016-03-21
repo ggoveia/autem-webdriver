@@ -31,10 +31,47 @@ browser.findElement(webdriver.By.name("numeroServico")).sendKeys("1");
 browser.findElement(webdriver.By.name("valor")).sendKeys("70,00");
 browser.findElement(webdriver.By.css("input[type='button']")).click();
 
+browser.switchTo().alert().then(function (alert) {
+    alert.getText().then(function (text) {
+        console.log(text);
+        alert.accept();
+    });
+}, function (err) {
+    return;
+});
+
+browser.switchTo().alert().then(function (alert) {
+    alert.getText().then(function (text) {
+        console.log(text);
+        alert.accept();
+    });
+}, function (err) {
+    return;
+});
+
+
 browser.findElement(webdriver.By.name("idAssistencia")).sendKeys("22730309");
 browser.findElement(webdriver.By.name("numeroServico")).sendKeys("1");
 browser.findElement(webdriver.By.name("valor")).sendKeys("71,00");
 browser.findElement(webdriver.By.css("input[type='button']")).click();
+
+browser.switchTo().alert().then(function (alert) {
+    alert.getText().then(function (text) {
+        console.log(text);
+        alert.accept();
+    });
+}, function (err) {
+    return;
+});
+
+browser.switchTo().alert().then(function (alert) {
+    alert.getText().then(function (text) {
+        console.log(text);
+        alert.accept();
+    });
+}, function (err) {
+    return;
+});
 
 browser.wait(function () {
      return webdriver.until.elementLocated(webdriver.By.name("ItemLoteFinancLancActionForm"));
