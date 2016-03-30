@@ -14,7 +14,7 @@ gulp.task('tests', tests);
 
 gulp.task('watch-test', function () {
     tests();
-    gulp.watch(['test/**', 'app/**/*'], ['tests']);
+    gulp.watch(['test/**/*', 'app/**/*'], ['tests']);
 });
 
 function tests () {
