@@ -36,3 +36,7 @@ app.on('ready', function () {
   });
 
 });
+
+ipc.on('process-itens', function(event, arg) {
+
+});
