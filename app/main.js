@@ -2,6 +2,11 @@
 
 // Module to control application life.
 var app = require('app'); 
+var fs = require('fs');
+var driverRegister = require('../app/driver.js');
+const ipc = require('electron').ipcMain;
+
+
 
 // Module to create native browser window.
 var BrowserWindow = require('browser-window');
@@ -35,8 +40,27 @@ app.on('ready', function () {
     mainWindow = null;
   });
 
+  ipc.on('process-itens', function(event, arg) {
+      
+      var files = [];
+      var errorList = [];
+      
+      if (arg.length >0){
+        for(var i = 0; i<=arg.length; i++)
+        {
+          if(arg[i].id != undefined){
+            files.push(arg[i])
+          }else{
+            i = arg.length;
+          }
+        }
+      driverRegister.register(files,errorList);
+      }
+      
+      var file = fs.createWriteStream('error.txt');
+      file.on('error', function(err) { /* error handling */ });
+      errorList.forEach(function(v) { file.write(v.join(', ') + '\n'); });
+          file.end();
+      });
 });
 
-ipc.on('process-itens', function(event, arg) {
-
-});
