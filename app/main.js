@@ -2,7 +2,7 @@
 
 // Module to control application life.
 var app = require('app'); 
-var fs = require('fs');
+
 var driverRegister = require('../app/driver.js');
 const ipc = require('electron').ipcMain;
 
@@ -54,13 +54,9 @@ app.on('ready', function () {
             i = arg.length;
           }
         }
-      driverRegister.register(files,errorList);
+        driverRegister.register(files,errorList);
       }
-      
-      var file = fs.createWriteStream('error.txt');
-      file.on('error', function(err) { /* error handling */ });
-      errorList.forEach(function(v) { file.write(v.join(', ') + '\n'); });
-          file.end();
+    
       });
 });
 

@@ -1,6 +1,18 @@
 var webdriver = require('selenium-webdriver');
+const EventEmitter = require('events').EventEmitter;
+const myEE = new EventEmitter();
+var fs = require('fs');
 
 exports.register = register;
+
+var file = fs.createWriteStream('error.txt');
+
+myEE.on("Erro", function (err) {
+    
+    file.write(err);
+    // errorListTest.forEach(function(v) { file.write(v.join(', ') + '\n'); });
+    file.end();
+});
 
 function register (itens,errorList){
     var webdriver = require('selenium-webdriver');
@@ -48,11 +60,18 @@ function register (itens,errorList){
         browser.findElement(webdriver.By.css("input[type='button']")).click();
         
         browser.switchTo().alert().then(function (alert) {
+            var error = ""
             alert.getText().then(function (text) {
-                console.log(text);
+                
+                error = text;
+                
                 errorList.push(element.id + " - " +text);
                 alert.accept();
+                
             });
+            
+            myEE.emit("erro", error);
+            
         }, function (err) {
             return;
         });
@@ -83,6 +102,21 @@ function register (itens,errorList){
         return webdriver.until.elementLocated(webdriver.By.css("td[width='720']"));
     },1000);
     
+    // browser.wait(function () {
+    //     return webdriver.until.elementLocated(webdriver.By.name("consistirLote"));
+    // },1000);
+    
+    browser.findElement(webdriver.By.name("consistirLote")).then(function(){
+        browser.findElement(webdriver.By.id("consistirLote")).click();
+    }, function(err) {
+        if (err.state && err.state === 'no such element') {
+            console.log('Element not found');
+        } else {
+            webdriver.promise.rejected(err);
+        }
+        browser.quit();
+    });
+    
      browser.wait(function () {
         return webdriver.until.elementLocated(webdriver.By.id("consistirLote"));
     },1000).then(function(){
@@ -93,18 +127,35 @@ function register (itens,errorList){
         } else {
             webdriver.promise.rejected(err);
         }
-        return;
+        browser.quit();
     });
             
     browser.wait(function () {
         return webdriver.until.elementLocated(webdriver.By.css("td[class='ex_campos_vermelho']"));
-    },1000);
+    },1000).then(function(){
+        
+        var teste = webdriver.until.elementLocated(webdriver.By.css("td[class='ex_campos_vermelho']"));
+        
+        teste.forEach(function(element){
+            errorList.push(text);
+        });
+        
+    });
             
     browser.findElement(webdriver.By.css("td[class='ex_campos_vermelho']")).getAttribute("innerHTML").then(
         function(text) {
-            errorList.push(element.id + " - " + text);
+            errorList.push(text);
             console.log(text);
     });
+   
+    browser.findElement(webdriver.By.name("idAssistencia")).then(function(){
+        
+        errorList.forEach(function(v) { file.write(v += "\r\n"); });
+        file.end();
+        
+    })
+    
+    
 };
 
 // var site = "http://www.juvo.com.br/juvoweb/login.html";
