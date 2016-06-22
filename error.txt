@@ -1,0 +1,13 @@
+23073547 - Não foi possível efetuar a operação desejada. Houve os seguintes problemas:
+- Campo com valor inválido. Processo já adicionado ao Lote.
+
+23073547 - Não foi possível efetuar a operação desejada. Houve os seguintes problemas:
+- Campo com valor inválido. Processo já adicionado ao Lote.
+
+23081603 - Não foi possível efetuar a operação desejada. Houve os seguintes problemas:
+- Campo com valor inválido. Processo já adicionado ao Lote.
+
+23081603 - Não foi possível efetuar a operação desejada. Houve os seguintes problemas:
+- Campo com valor inválido. Processo já adicionado ao Lote.
+
+U32923081603/3  - Valor informado diverge do cadastrado. Valor correto $  196.0

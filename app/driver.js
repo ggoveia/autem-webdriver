@@ -1,7 +1,9 @@
 var webdriver = require('selenium-webdriver');
+var config    = require('../app/config.js');;
 const EventEmitter = require('events').EventEmitter;
 const myEE = new EventEmitter();
 var fs = require('fs');
+var error = false;
 
 exports.register = register;
 
@@ -18,11 +20,13 @@ function register (itens,errorList){
     var webdriver = require('selenium-webdriver');
     var browser = new webdriver.Builder().usingServer().withCapabilities({'browserName': 'chrome' }).build();
 
-    var site = "http://www.juvo.com.br/juvoweb/login.html";
+    var site = config.url;
+    var user = config.login;
+    var password = config.password;
     
     browser.get(site);
-    browser.findElement(webdriver.By.name("login")).sendKeys("eduardo.mizani");
-    browser.findElement(webdriver.By.name("password")).sendKeys("cargo5191");
+    browser.findElement(webdriver.By.name("login")).sendKeys(config.login);
+    browser.findElement(webdriver.By.name("password")).sendKeys(password);
     browser.findElement(webdriver.By.css("input[type='submit']")).click();
 
     browser.wait(function () {
@@ -44,13 +48,6 @@ function register (itens,errorList){
         return webdriver.until.elementLocated(webdriver.By.name("idAssistencia"));
     }, 1000);
 
-    // var i1 = {id:"22730309", numServico:"1", valor:"71,00"};
-    // var i2 = {id:"22734147", numServico:"1", valor:"71,00"};
-    // var i3 = {id:"22741833", numServico:"1", valor:"71,00"};
-    // var i4 = {id:"22741395", numServico:"1", valor:"71,00"};
-    
-    // var testObject = [i1,i2,i3,i4];
-
     itens.forEach(function(element) {
     
         browser.findElement(webdriver.By.name("idAssistencia")).sendKeys(element.id);
@@ -62,17 +59,12 @@ function register (itens,errorList){
         browser.switchTo().alert().then(function (alert) {
             var error = ""
             alert.getText().then(function (text) {
-                
                 error = text;
-                
                 errorList.push(element.id + " - " +text);
                 alert.accept();
-                
             });
-            
             myEE.emit("erro", error);
-            
-        }, function (err) {
+          }, function (err) {
             return;
         });
 
@@ -102,47 +94,34 @@ function register (itens,errorList){
         return webdriver.until.elementLocated(webdriver.By.css("td[width='720']"));
     },1000);
     
-    // browser.wait(function () {
-    //     return webdriver.until.elementLocated(webdriver.By.name("consistirLote"));
-    // },1000);
+   browser.findElement(webdriver.By.id("consistirLote")).click(function(){},function(err){
+       errorList.push("Verifique o log de erro");
+   });
     
-    browser.findElement(webdriver.By.name("consistirLote")).then(function(){
-        browser.findElement(webdriver.By.id("consistirLote")).click();
-    }, function(err) {
-        if (err.state && err.state === 'no such element') {
-            console.log('Element not found');
-        } else {
-            webdriver.promise.rejected(err);
-        }
-        browser.quit();
-    });
-    
-     browser.wait(function () {
-        return webdriver.until.elementLocated(webdriver.By.id("consistirLote"));
-    },1000).then(function(){
-        browser.findElement(webdriver.By.id("consistirLote")).click();
-    }, function(err) {
-        if (err.state && err.state === 'no such element') {
-            console.log('Element not found');
-        } else {
-            webdriver.promise.rejected(err);
-        }
-        browser.quit();
-    });
+    // browser.findElement(webdriver.By.name("consistirLote")).then(function(){
+    //     browser.findElement(webdriver.By.id("consistirLote")).click();
+    // }, function(err) {
+    //     if (err.state && err.state === 'no such element') {
+    //         console.log('Element not found');
+    //     } else {
+    //         webdriver.promise.rejected(err);
+    //     }
+    //     browser.quit();
+    // });
             
     browser.wait(function () {
         return webdriver.until.elementLocated(webdriver.By.css("td[class='ex_campos_vermelho']"));
     },1000).then(function(){
         
         var teste = webdriver.until.elementLocated(webdriver.By.css("td[class='ex_campos_vermelho']"));
-        
-        teste.forEach(function(element){
-            errorList.push(text);
-        });
+        // teste.forEach(function(element){
+            // errorList.push(teste);
+        // });
         
     });
-            
-    browser.findElement(webdriver.By.css("td[class='ex_campos_vermelho']")).getAttribute("innerHTML").then(
+     
+                
+     browser.findElement(webdriver.By.css("td[class='ex_campos_vermelho']")).getAttribute("innerHTML").then(
         function(text) {
             errorList.push(text);
             console.log(text);
@@ -154,7 +133,7 @@ function register (itens,errorList){
         file.end();
         
     })
-    
+   
     
 };
 
